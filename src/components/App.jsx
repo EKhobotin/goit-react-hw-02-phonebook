@@ -42,8 +42,8 @@ export class App extends Component  {
     return (
       <>
         <FormAddContact onSubmit={ this.handleAddContact} />
-        <ContactsList contacts={this.getFilteredContacts()} delete={this.deleteContact } />
         <Filter inputSearch={this.getSearch} value={this.state.filter } />
+        <ContactsList contacts={this.getFilteredContacts()} delete={this.deleteContact } />
       </>
     )
   };
