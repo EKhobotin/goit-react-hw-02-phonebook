@@ -1,15 +1,20 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { Form, Container, Label, Button, Input } from "./FormAddContact.styled";
+
 
 export class FormAddContact extends Component {
   render() {
     return (
-      <form>
-        <label>
-          Ім'я:
-          <input type="text" name="name" required />
-        </label>
-        <button type="submit">Додати контакт</button>
-      </form>
+      <Container>
+
+      <Form>
+        <Label>
+          Contact Name:
+          <Input type="text" name="name" required />
+        </Label>
+        <Button type="submit">Додати контакт</Button>
+      </Form>
+      </Container>
     );
   }
 }
