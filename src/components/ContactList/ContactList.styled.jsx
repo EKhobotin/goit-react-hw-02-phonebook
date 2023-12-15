@@ -9,7 +9,7 @@ display:flex;
 justify-content: center; 
 `
 export const Span = styled.span`
-margin-left: 10px;
+margin: 0 10px;
 font-style: italic;
 font-weight: 500;
 `

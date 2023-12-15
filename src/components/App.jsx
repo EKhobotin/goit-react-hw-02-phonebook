@@ -15,23 +15,34 @@ export class App extends Component  {
     filter: '',
   }
 
-  handleAddContact = (name, number) => {
+  handleAddContact = (name, number) => {   
+  if (this.state.contacts.find(el => el.name === name)) {
+  alert(`${name} is already in contacts`);
+ return;
+    }
+    
     this.setState((prevState) => (
        {
       contacts: [...prevState.contacts, {id:nanoid(), name, number}]
     }))
     // console.log(name);
   };  
+
   getSearch = (search) => this.setState({ filter: search }) 
-  ; 
-  getFilteredContacts = () =>this.state.contacts.filter((el) =>  el.name.toLowerCase().includes(this.state.filter.toLocaleLowerCase()));
-  ;
+    ; 
+  
+  getFilteredContacts = () =>this.state.contacts.filter((el) =>  el.name.toLowerCase().includes(this.state.filter.toLocaleLowerCase()));  
+
+  deleteContact = (id) => 
+     this.setState((prevState)=>({contacts: prevState.contacts.filter((el)=>el.id!==id)}));
+  
+
   render() {
-    console.log(this.getFilteredContacts());
+    // console.log(this.getFilteredContacts());
     return (
       <>
         <FormAddContact onSubmit={ this.handleAddContact} />
-        <ContactsList contacts={this.getFilteredContacts()} />
+        <ContactsList contacts={this.getFilteredContacts()} delete={this.deleteContact } />
         <Filter inputSearch={this.getSearch} value={this.state.filter } />
       </>
     )
